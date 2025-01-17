@@ -24,19 +24,29 @@ std::string get_user_input(std::string_view prompt) {
 
 
 int main() {
-    using namespace std::string_literals;
     using namespace Executors;
 
     // Report version
     std::cout << "Build version: " << get_build_version() << std::endl;
 
-    // Test imports
-    Dummy1 d1 {};
-    Dummy2 d2 {};
+    // Test ThreadPoolExecutor
+    ThreadPoolExecutor thread_pool {};
+    std::vector<int> map_results { thread_pool.map<int, int>(
+        [](int x) { return x * x; },
+        {1, 2, 3, 4, 5}
+    ) };
+
+    // print map_results
+    std::cout << "ThreadPoolExecutor.map results: [";
+    for (auto result : map_results) {
+        std::cout << "    " << result << "\n";
+    }
+    std::cout << "]" << std::endl;
+
 
     // Test user input function
-    std::string inp { get_user_input("Enter something:") };
-    std::cout << "You entered: " << inp << std::endl;
+    // std::string inp { get_user_input("Enter something:") };
+    // std::cout << "You entered: " << inp << std::endl;
 
     return EXIT_SUCCESS;
 }
