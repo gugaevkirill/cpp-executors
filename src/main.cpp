@@ -36,17 +36,11 @@ int main() {
         {1, 2, 3, 4, 5}
     ) };
 
-    // print map_results
-    std::cout << "ThreadPoolExecutor.map results: [";
+    std::cout << "ThreadPoolExecutor.map results: [\n";
     for (auto result : map_results) {
-        std::cout << "    " << result << "\n";
+        std::cout << "    " << result << ",\n";
     }
     std::cout << "]" << std::endl;
-
-
-    // Test user input function
-    // std::string inp { get_user_input("Enter something:") };
-    // std::cout << "You entered: " << inp << std::endl;
 
     return EXIT_SUCCESS;
 }
